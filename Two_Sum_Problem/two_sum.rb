@@ -11,12 +11,27 @@
 
 # Sorting Solution
 
+# def two_sum?(arr, target_sum)
+#     new_arr = arr.select { |ele| ele < target_sum }
+#     new_arr.sort!
+#     new_arr.each do |ele|
+#         target = target_sum - ele
+#         return true if target == new_arr.bsearch {|x| x <=> target }
+#     end
+#     false
+# end
+
+# Hash Map
+
 def two_sum?(arr, target_sum)
-    new_arr = arr.select { |ele| ele < target_sum }
-    new_arr.sort!
-    new_arr.each do |ele|
-        target = target_sum - ele
-        return true if target == new_arr.bsearch {|x| x <=> target }
+    h1 = Hash.new(false)
+    arr.each_with_index do |el, i|
+        target = target_sum - el
+        if h1[target] == true
+            return true
+        else
+        h1[el] = true
+        end
     end
     false
 end
